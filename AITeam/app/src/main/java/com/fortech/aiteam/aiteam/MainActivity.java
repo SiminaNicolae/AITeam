@@ -9,8 +9,6 @@ import android.view.MenuItem;
 public class MainActivity extends Activity {
     //03.06.15
 	//Nicu commit
-    //Alandala Portocalala
-
 
 
     @Override
