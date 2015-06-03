@@ -2,10 +2,12 @@ package com.fortech.aiteam.aiteam;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 
 public class MainActivity extends Activity {
-    //test
+    //03.06.15
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
