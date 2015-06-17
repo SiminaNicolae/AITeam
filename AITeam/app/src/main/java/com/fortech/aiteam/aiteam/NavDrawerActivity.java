@@ -126,7 +126,7 @@ public class NavDrawerActivity extends Activity {
         FragmentManager fragmentManager=getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame,fragment).commit();
         mDrawerList.setItemChecked(position, true);
-        setTitle(mItemTitles[position]);
+        //setTitle(mItemTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
@@ -157,13 +157,18 @@ public class NavDrawerActivity extends Activity {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView=inflater.inflate(R.layout.fragment_planet,container,false);
+            View rootView=inflater.inflate(R.layout.fragment_planet, container, false);
             int i=getArguments().getInt(ARG_PLANET_NUMBER);
-            String planet=getResources().getStringArray(R.array.planets_array)[i];
-            int imageId =getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),"drawable",getActivity().getPackageName());
-            ((ImageView)rootView.findViewById(R.id.image)).setImageResource(imageId);
-            getActivity().setTitle(planet);
+            //String planet=getResources().getStringArray(R.array.planets_array)[i];
+            //int imageId =getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),"drawable",getActivity().getPackageName());
+            //((ImageView)rootView.findViewById(R.id.image)).setImageResource(imageId);
+            //getActivity().setTitle(planet);
             return rootView;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Todo Kill app
     }
 }
