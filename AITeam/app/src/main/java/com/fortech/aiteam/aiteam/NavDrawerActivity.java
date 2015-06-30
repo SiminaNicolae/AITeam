@@ -30,17 +30,17 @@ public class NavDrawerActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-    Button button1;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mItemTitles;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navdrawer_activity);
 
-        mItemTitles=getResources().getStringArray(R.array.planets_array);
+        String[] mItemTitles={"Selecteaza simptome","Sfaturi de prim ajutor","Setari","Detalii"};
         mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList=(ListView) findViewById(R.id.left_drawer);
 
@@ -60,7 +60,6 @@ public class NavDrawerActivity extends Activity {
             public void onDrawerClosed(View view)
             {
                 getActionBar().setTitle(mTitle);
-                invalidateOptionsMenu();
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -69,45 +68,7 @@ public class NavDrawerActivity extends Activity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        boolean drawerOpen=mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(mDrawerToggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        switch (item.getItemId())
-        {
-            case R.id.action_websearch:
-                Intent intent=new Intent(Intent.ACTION_WEB_SEARCH);
-                intent.putExtra(SearchManager.QUERY,getActionBar().getTitle());
-                if(intent.resolveActivity(getPackageManager())!=null)
-                {
-                    startActivity(intent);
-                }
-                else
-                {
-                    Toast.makeText(this,R.string.app_not_available,Toast.LENGTH_LONG).show();
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener
     {
@@ -119,15 +80,21 @@ public class NavDrawerActivity extends Activity {
 
     private void selectItem(int position)
     {
-        Fragment fragment= new PlanetFragment();
-        Bundle args=new Bundle();
-        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-        fragment.setArguments(args);
-        FragmentManager fragmentManager=getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame,fragment).commit();
-        mDrawerList.setItemChecked(position, true);
-        //setTitle(mItemTitles[position]);
-        mDrawerLayout.closeDrawer(mDrawerList);
+
+        switch (position){
+            case 0:
+                //todo simpt;
+                break;
+            case 1:
+                //todo sfaturi
+                break;
+            case 2:
+                //todo setari
+                break;
+            case 3:
+                //todo detalii
+                break;
+        }
     }
 
     public void setmTitle(CharSequence mTitle) {
@@ -147,28 +114,11 @@ public class NavDrawerActivity extends Activity {
         mDrawerToggle.onConfigurationChanged(newConfig);
 
     }
-    public static class PlanetFragment extends Fragment
-    {
-        public static final String ARG_PLANET_NUMBER="planet_number";
-        public PlanetFragment() {
 
-        }
-
-        @Nullable
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView=inflater.inflate(R.layout.fragment_planet, container, false);
-            int i=getArguments().getInt(ARG_PLANET_NUMBER);
-            //String planet=getResources().getStringArray(R.array.planets_array)[i];
-            //int imageId =getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),"drawable",getActivity().getPackageName());
-            //((ImageView)rootView.findViewById(R.id.image)).setImageResource(imageId);
-            //getActivity().setTitle(planet);
-            return rootView;
-        }
-    }
 
     @Override
     public void onBackPressed() {
-        //Todo Kill app
+        super.onBackPressed();
+        System.exit(0);
     }
 }
