@@ -5,6 +5,7 @@ import java.util.Locale;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -80,6 +81,8 @@ public class NavDrawerActivity extends Activity {
 
     private void selectItem(int position)
     {
+        Fragment newFragment;
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
         switch (position){
             case 0:
@@ -87,6 +90,10 @@ public class NavDrawerActivity extends Activity {
                 break;
             case 1:
                 //todo sfaturi
+                newFragment = new PrimAjutorActivity();
+                transaction.replace(R.id.content_frame, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
                 break;
             case 2:
                 //todo setari
