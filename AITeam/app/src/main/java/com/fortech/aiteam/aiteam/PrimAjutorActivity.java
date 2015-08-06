@@ -13,9 +13,11 @@ import android.widget.Button;
  * Created by Andrei on 7/16/2015.
  */
 public class PrimAjutorActivity extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.prim_ajutor_layout,
                 container, false);

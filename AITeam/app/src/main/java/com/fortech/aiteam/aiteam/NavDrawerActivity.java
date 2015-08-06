@@ -102,6 +102,8 @@ public class NavDrawerActivity extends Activity {
                 //todo detalii
                 break;
         }
+
+        mDrawerLayout.closeDrawer(mDrawerList);
     }
 
     public void setmTitle(CharSequence mTitle) {
