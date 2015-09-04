@@ -87,6 +87,11 @@ public class NavDrawerActivity extends Activity {
         switch (position){
             case 0:
                 //todo simpt;
+                newFragment = new SimptomeBoliActivity();
+                transaction.replace(R.id.content_frame, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
                 break;
             case 1:
                 //todo sfaturi
@@ -96,11 +101,9 @@ public class NavDrawerActivity extends Activity {
                 transaction.commit();
                 break;
             case 2:
-                //todo setari
-                break;
-            case 3:
                 //todo detalii
                 break;
+
         }
     }
 
