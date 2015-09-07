@@ -32,8 +32,4 @@ public class Diseases {
     public void setTreatment(String treatment) {
         this.treatment = treatment;
     }
-
-
-
-
 }
