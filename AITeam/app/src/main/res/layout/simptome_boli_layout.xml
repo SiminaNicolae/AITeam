@@ -6,8 +6,8 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listaboli"
-        android:background="@drawable/welcome_screen_bg">
+        android:id="@+id/listaboli">
+
 
     </ListView>
 
