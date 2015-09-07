@@ -24,8 +24,8 @@ public class SimptomeBoliActivity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "Ou87H1hk6IKbI6Nm8gDrts56o6vjfHagXBQDfXZS", "KKwhLiOG0mm7St1QbHCLhoRhRLo4qwt5N7yvDKFt");
+        Parse.enableLocalDatastore(getActivity());
+        Parse.initialize(getActivity(), "Ou87H1hk6IKbI6Nm8gDrts56o6vjfHagXBQDfXZS", "KKwhLiOG0mm7St1QbHCLhoRhRLo4qwt5N7yvDKFt");
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Diseases");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -46,13 +46,13 @@ public class SimptomeBoliActivity extends Fragment {
         });
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
 
-        View view=inflater.inflate(R.layout.simptome_boli_layout, container, false);
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.simptome_boli_layout,
+                container, false);
+        return view;
     }
-
-
 }

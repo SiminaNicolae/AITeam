@@ -41,7 +41,7 @@ public class NavDrawerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navdrawer_activity);
 
-        String[] mItemTitles={"Selecteaza simptome","Sfaturi de prim ajutor","Setari","Detalii"};
+        String[] mItemTitles={"Selecteaza simptome","Sfaturi de prim ajutor","Detalii"};
         mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList=(ListView) findViewById(R.id.left_drawer);
 
@@ -102,7 +102,10 @@ public class NavDrawerActivity extends Activity {
                 break;
             case 2:
                 //todo detalii
-                break;
+                newFragment = new InfoActivity();
+                transaction.replace(R.id.content_frame, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
         }
 
