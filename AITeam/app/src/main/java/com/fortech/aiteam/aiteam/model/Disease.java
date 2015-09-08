@@ -1,12 +1,14 @@
 package com.fortech.aiteam.aiteam.model;
 
+import com.google.gson.Gson;
+
 /**
  * Created by Andrei on 9/2/2015.
  */
-public class Diseases {
+public class Disease extends GsonObject{
 
     private String name;
-    private int idDiseases;
+    private int idDisease;
     private String treatment;
 
     public String getName() {
@@ -17,12 +19,12 @@ public class Diseases {
         this.name = name;
     }
 
-    public int getIdDiseases() {
-        return idDiseases;
+    public int getIdDisease() {
+        return idDisease;
     }
 
-    public void setIdDiseases(int idDiseases) {
-        this.idDiseases = idDiseases;
+    public void setIdDisease(int idDisease) {
+        this.idDisease = idDisease;
     }
 
     public String getTreatment() {
