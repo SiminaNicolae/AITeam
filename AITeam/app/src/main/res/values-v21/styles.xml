@@ -2,9 +2,10 @@
 <resources>
     <style name="AppTheme" parent="android:Theme.Material.Light">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:color">@color/blue</item>
     </style>
     <style name="MyActionBar"
         parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/transparent</item>
+        <item name="android:background">@color/blue</item>
     </style>
 </resources>

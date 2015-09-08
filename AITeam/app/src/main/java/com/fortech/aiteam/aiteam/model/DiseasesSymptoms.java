@@ -1,8 +1,5 @@
 package com.fortech.aiteam.aiteam.model;
 
-/**
- * Created by nicolaes on 9/8/15.
- */
 public class DiseasesSymptoms {
     private int mIdDisease;
     private int mIdSymptom;

@@ -1,4 +1,4 @@
-package com.fortech.aiteam.aiteam;
+package com.fortech.aiteam.aiteam.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;

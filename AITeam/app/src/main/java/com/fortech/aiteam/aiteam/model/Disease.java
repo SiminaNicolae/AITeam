@@ -1,10 +1,5 @@
 package com.fortech.aiteam.aiteam.model;
 
-import com.google.gson.Gson;
-
-/**
- * Created by Andrei on 9/2/2015.
- */
 public class Disease extends GsonObject{
 
     private String name;

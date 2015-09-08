@@ -1,7 +1,7 @@
 package com.fortech.aiteam.aiteam.model;
 
-import com.fortech.aiteam.aiteam.JsonDateDeserializer;
-import com.fortech.aiteam.aiteam.JsonDateSerializer;
+import com.fortech.aiteam.aiteam.utils.JsonDateDeserializer;
+import com.fortech.aiteam.aiteam.utils.JsonDateSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

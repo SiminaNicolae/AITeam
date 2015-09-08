@@ -1,21 +1,23 @@
-package com.fortech.aiteam.aiteam;
+package com.fortech.aiteam.aiteam.presentation;
 
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.fortech.aiteam.aiteam.R;
+import com.fortech.aiteam.aiteam.adapters.ChooseSymptomAdapter;
 import com.fortech.aiteam.aiteam.callbacks.SymptomSelectionListener;
 import com.fortech.aiteam.aiteam.model.Disease;
 import com.fortech.aiteam.aiteam.model.Symptom;
 import com.fortech.aiteam.aiteam.model.DiseasesSymptoms;
+import com.fortech.aiteam.aiteam.presentation.PosibileBoliActivity;
+import com.google.gson.Gson;
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -37,8 +39,6 @@ public class SimptomeBoliActivity extends Fragment implements SymptomSelectionLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Parse.enableLocalDatastore(getActivity());
-        Parse.initialize(getActivity(), "Ou87H1hk6IKbI6Nm8gDrts56o6vjfHagXBQDfXZS", "KKwhLiOG0mm7St1QbHCLhoRhRLo4qwt5N7yvDKFt");
 
         fetchDiseasesList();
 
@@ -91,7 +91,8 @@ public class SimptomeBoliActivity extends Fragment implements SymptomSelectionLi
                 }
 
                 Intent intent = new Intent(getActivity(), PosibileBoliActivity.class);
-                intent.putParcelableArrayListExtra("ListaBoli", (ArrayList<? extends Parcelable>) mProbableDiseases);
+                String listSerializedToJson = new Gson().toJson(mProbableDiseases);
+                intent.putExtra("ListaBoli", listSerializedToJson);
                 startActivity(intent);
             }
         });

@@ -1,4 +1,4 @@
-package com.fortech.aiteam.aiteam;
+package com.fortech.aiteam.aiteam.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,52 +7,48 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fortech.aiteam.aiteam.R;
+import com.fortech.aiteam.aiteam.callbacks.DiseaseSelectionListener;
 import com.fortech.aiteam.aiteam.callbacks.SymptomSelectionListener;
+import com.fortech.aiteam.aiteam.model.Disease;
 import com.fortech.aiteam.aiteam.model.Symptom;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ChooseSymptomAdapter extends ApplicationAdapter<Symptom> {
+public class DiseasesAdapter extends ApplicationAdapter<Disease> {
     private final LayoutInflater mInflater;
-    private final List<Symptom> allItems;
-    private SymptomSelectionListener mSymptomSelectionListener;
+    private final List<Disease> allItems;
+    private DiseaseSelectionListener mDiseaseSelectionListener;
 
-    public ChooseSymptomAdapter(Context context, List<Symptom> objects, SymptomSelectionListener symptomSelectionListener) {
+    public DiseasesAdapter(Context context, List<Disease> objects, DiseaseSelectionListener diseaseSelectionListener) {
         super(context, objects);
         mInflater = LayoutInflater.from(context);
         allItems = new ArrayList<>();
-        mSymptomSelectionListener = symptomSelectionListener;
+        mDiseaseSelectionListener = diseaseSelectionListener;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-        final Symptom symptomRowItem = getItem(position);
+        final Disease diseaseRowItem = getItem(position);
 
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = mInflater.inflate(R.layout.choose_symptom_list_row, parent, false);
-            viewHolder.symptomTextView = (TextView) convertView.findViewById(R.id.symptom);
-            viewHolder.checkImage = (ImageView) convertView.findViewById(R.id.check_button);
+            convertView = mInflater.inflate(R.layout.disease_list_row, parent, false);
+            viewHolder.diseaseTextView = (TextView) convertView.findViewById(R.id.disease_editText);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.symptomTextView.setText(symptomRowItem.getName());
-
-        if (symptomRowItem.isSelected()) {
-            viewHolder.checkImage.setBackgroundResource(R.drawable.checked_button);
-        } else {
-            viewHolder.checkImage.setBackgroundResource(R.drawable.unchecked_button);
-        }
+        viewHolder.diseaseTextView.setText(diseaseRowItem.getName());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSymptomSelectionListener.onSymptomSelected(symptomRowItem.getIdSymptom());
+                mDiseaseSelectionListener.onDieseaseSelected(diseaseRowItem);
             }
         });
 
@@ -66,19 +62,18 @@ public class ChooseSymptomAdapter extends ApplicationAdapter<Symptom> {
     }
 
     @Override
-    public void addAll(Collection<? extends Symptom> collection) {
+    public void addAll(Collection<? extends Disease> collection) {
         super.addAll(collection);
         allItems.addAll(collection);
     }
 
     @Override
-    public void add(Symptom object) {
+    public void add(Disease object) {
         super.add(object);
         allItems.add(object);
     }
 
     private static class ViewHolder {
-        private TextView symptomTextView;
-        private ImageView checkImage;
+        private TextView diseaseTextView;
     }
 }

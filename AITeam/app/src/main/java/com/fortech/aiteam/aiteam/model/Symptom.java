@@ -1,8 +1,5 @@
 package com.fortech.aiteam.aiteam.model;
 
-/**
- * Created by nicolaes on 9/7/15.
- */
 public class Symptom {
     private int idSymptom;
     private String name;

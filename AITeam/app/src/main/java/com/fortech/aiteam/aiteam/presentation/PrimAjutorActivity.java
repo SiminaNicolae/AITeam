@@ -1,4 +1,4 @@
-package com.fortech.aiteam.aiteam;
+package com.fortech.aiteam.aiteam.presentation;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.fortech.aiteam.aiteam.R;
 
 /**
  * Created by Andrei on 7/16/2015.

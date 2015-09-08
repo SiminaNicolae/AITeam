@@ -1,31 +1,20 @@
-package com.fortech.aiteam.aiteam;
+package com.fortech.aiteam.aiteam.presentation;
 
 
-import java.util.Locale;
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.SearchManager;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.fortech.aiteam.aiteam.R;
 
 public class NavDrawerActivity extends Activity {
     private DrawerLayout mDrawerLayout;
@@ -41,6 +30,10 @@ public class NavDrawerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navdrawer_activity);
 
+        mTitle = "Personal Assistent";
+        getActionBar().setTitle(mTitle);
+        getActionBar().setIcon(null);
+
         String[] mItemTitles={"Selecteaza simptome","Sfaturi de prim ajutor","Detalii"};
         mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList=(ListView) findViewById(R.id.left_drawer);
@@ -49,8 +42,10 @@ public class NavDrawerActivity extends Activity {
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, mItemTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
+
         mDrawerToggle=new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -58,18 +53,31 @@ public class NavDrawerActivity extends Activity {
                 R.string.drawer_open,
                 R.string.drawer_close)
         {
-            public void onDrawerClosed(View view)
-            {
+            public void onDrawerClosed(View view){
+                getActionBar().setTitle(mTitle);
+            }
+            public void onDrawerOpened(View drawerView) {
                 getActionBar().setTitle(mTitle);
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
         if(savedInstanceState==null) {
             selectItem(0);
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        // Handle your other action bar items...
 
+        return super.onOptionsItemSelected(item);
+    }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener
     {

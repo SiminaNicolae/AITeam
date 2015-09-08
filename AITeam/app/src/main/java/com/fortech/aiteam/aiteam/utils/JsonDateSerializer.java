@@ -1,4 +1,4 @@
-package com.fortech.aiteam.aiteam;
+package com.fortech.aiteam.aiteam.utils;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
